@@ -1,3 +1,188 @@
+body {
+  background: lightblue;
+}
+
 h1 {
-  color: red;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  top: 50px;
+  margin: 0px auto;
+  padding: 20px;
+  max-width: 600px;
+  font-family: Poppins;
+}
+
+.search_form {
+  border: none;
+  font-size: 14px;
+  margin: 0px auto;
+  line-height: 1.7;
+  padding: 5px;
+  font-style: italic;
+}
+
+#btn_search {
+  border-radius: 6px;
+  border: none;
+  padding: 5px 15px 5px 15px;
+  color: #fcffe7;
+  background: #0002a1;
+}
+
+#search_city_name {
+  border-color: #0002a1;
+  border-radius: 6px;
+  border-width: 1px;
+  padding: 5px 15px 5px 15px;
+}
+
+.dropdown_menu {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  background-color: #fcffe7;
+  width: 480px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.dropdown_content a {
+  color: black;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: block;
+  background-color: #f1f6f5;
+  border-radius: 6px;
+}
+
+.dropdown_menu:hover .dropdown_content {
+  display: block;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  margin: 30px 0px;
+  width: 480px;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  padding: 10px 5px;
+  transition: 0.3s;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+@-webkit-keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+.left_block {
+  font-size: 18px;
+  padding: 30px 10px 10px 10px;
+}
+
+.float-left {
+  font-size: 32px;
+  position: relative;
+  left: 40px;
+  width: 100px;
+  margin: 0px;
+}
+
+.units {
+  font-size: 12px;
+  top: -20px;
+  position: relative;
+}
+#current_temperature_max,
+#current_temperature_min {
+  font-size: 18px;
+  position: relative;
+  left: 20px;
+}
+.right_block {
+  position: relative;
+  font-size: 16px;
+  width: 150px;
+  top: -100px;
+  left: 240px;
+}
+
+.tab_details {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  margin: 30px 0px;
+}
+
+.tab_details button {
+  background-color: blue;
+  border: 1px solid blue;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 5px;
+  transition: 0.3s;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.current_details {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }

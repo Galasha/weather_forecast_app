@@ -5,21 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="src/styles.css" rel="stylesheet" />
-    <title>Document</title>
+    <title>Weather Forecast</title>
   </head>
   <body>
     <div class="container">
       <h1>Weather forecast</h1>
-      <form id="search_form">
-        <input
-          type="text"
-          placeholder="Enter a city..."
-          id="search_city_name"
-        />
-        <input type="submit" value="Search" id="btn_search" />
-      </form>
-    </div>
+      <div>
+        <form id="search_form">
+          <div class="dropdown_menu">
+            <input
+              type="text"
+              placeholder="Enter a city..."
+              autocomplete="off"
+              size="60px"
+              id="search_city_name"
+            />
+            <div class="dropdown_content">
+              <a href="#">Use your location</a>
+            </div>
+          </div>
+          <input type="submit" value="Search" id="btn_search" />
+        </form>
+      </div>
+      <div class="tab">
+        <button
+          class="tablinks"
+          onclick="openForecast(event,'Forecast_Today')"
+          id="defaultOpen"
+        >
+          Current Weather
+        </button>
+        <button class="tablinks" onclick="openForecast(event,'Forecast_5')">
+          Forecast on 5 days
+        </button>
+        <button class="tablinks" onclick="openForecast(event,'Forecast_12')">
+          Forecast on 12 days
+        </button>
+        <div class="tabcontent" id="Forecast_Today">
+          <div class="current_temperature">
+            <ul class="left_block">
+              <li>Today is <span id="current_date">Sunday</span></li>
+              <li>Current time: <span id="current_time">21:21</span></li>
+            </ul>
 
-    <script href="src/web.js"></script>
+            <div class="float-left">
+              <img src="#" width="60" id="current_icon_weather" />
+              <span id="current_degrees">15 </span>
+              <span class="units">
+                <a href="#" id="celsius" class="active">C</a> |
+                <a href="#" id="fahrenheit">F</a>
+              </span>
+              <br />
+              <span id="current_temperature_max">15</span>
+              <span id="current_temperature_min">8</span>
+            </div>
+
+            <div class="right_block">
+              <ul>
+                <li><span id="curr_weather">Clouds</span></li>
+                <li>Humidity: <span id="curr_humidity"></span> %</li>
+                <li>Wind: <span id="curr_wind"></span> m/s</li>
+              </ul>
+            </div>
+            <div class="btn-button">
+              <div class="tab_details">
+                <button class="details" id="btn_details">
+                  Show more details
+                </button>
+              </div>
+              <div class="current_details" id="Details">
+                Here will be more different additional data
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tabcontent" id="Forecast_5">forecast 5 days</div>
+        <div class="tabcontent" id="Forecast_12">
+          forecast 12 days
+        </div>
+      </div>
+    </div>
+    <script src="src/app.js"></script>
   </body>
 </html>
