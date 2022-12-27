@@ -1,5 +1,5 @@
 function openForecast(evt, forecast) {
-  var i, tabcontent, tablinks;
+  let i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
@@ -9,14 +9,22 @@ function openForecast(evt, forecast) {
     tablinks[i].className = tablinks[i].className.replace("active", "");
   }
   document.getElementById(forecast).style.display = "block";
-  evt.currentTarget.className += " active";
+  evt.currentTarget.className += "active";
 }
 
 document.getElementById("defaultOpen").click();
 
 function openDetails() {
-  document.getElementById("Details").style.display = "block";
+  let btnDetails = document.getElementById("btn_details");
+  let btnContent = document.getElementById("btn_content");
+  if (btnContent.style.display === "none") {
+    btnContent.style.display = "block";
+    btnDetails.innerHTML = "Show less <<<";
+  } else {
+    btnContent.style.display = "none";
+    btnDetails.innerHTML = "Show more details >>>";
+  }
 }
 
-let displayDetails = document.querySelector(".tab_details");
+let displayDetails = document.querySelector("#btn_details");
 displayDetails.addEventListener("click", openDetails);

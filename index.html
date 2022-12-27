@@ -42,42 +42,33 @@
           Forecast on 12 days
         </button>
         <div class="tabcontent" id="Forecast_Today">
+          <div>Today is Friday</div>
+          <div>13:40</div>
           <div class="current_temperature">
-            <ul class="left_block">
-              <li>Today is <span id="current_date">Sunday</span></li>
-              <li>Current time: <span id="current_time">21:21</span></li>
-            </ul>
-
-            <div class="float-left">
-              <img src="#" width="60" id="current_icon_weather" />
-              <span id="current_degrees">15 </span>
-              <span class="units">
-                <a href="#" id="celsius" class="active">C</a> |
-                <a href="#" id="fahrenheit">F</a>
-              </span>
-              <br />
+            <img
+              src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+              id="current_weather_image"
+              width="70px;"
+            />
+            <div id="current_weather_temperature">15</div>
+            <div class="units">
+              <span><a href="#" id="celsius">C</a></span> |
+              <span><a href="#" id="fahrenheit">F</a></span>
+            </div>
+            <div class="max-min">
               <span id="current_temperature_max">15</span>
               <span id="current_temperature_min">8</span>
             </div>
-
-            <div class="right_block">
+            <div class="current_desctiption" id="description">
               <ul>
-                <li><span id="curr_weather">Clouds</span></li>
-                <li>Humidity: <span id="curr_humidity"></span> %</li>
-                <li>Wind: <span id="curr_wind"></span> m/s</li>
+                <li id="current_weather_description">Clouds</li>
+                <li>Humidity is <span id="current_humidity"></span>%</li>
+                <li>Wind is <span id="current_wind"></span>m/s</li>
               </ul>
             </div>
-            <div class="btn-button">
-              <div class="tab_details">
-                <button class="details" id="btn_details">
-                  Show more details
-                </button>
-              </div>
-              <div class="current_details" id="Details">
-                Here will be more different additional data
-              </div>
-            </div>
           </div>
+          <div id="btn_details">Show more details >>></div>
+          <div id="btn_content">Here will be additional details</div>
         </div>
         <div class="tabcontent" id="Forecast_5">forecast 5 days</div>
         <div class="tabcontent" id="Forecast_12">

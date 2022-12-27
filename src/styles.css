@@ -9,9 +9,8 @@ h1 {
 
 .container {
   position: relative;
-  top: 50px;
+  top: 30px;
   margin: 0px auto;
-  padding: 20px;
   max-width: 600px;
   font-family: Poppins;
 }
@@ -99,9 +98,11 @@ h1 {
 }
 .tabcontent {
   display: none;
-  padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  border-bottom: none;
+  font-size: 18px;
+  padding: 60px 0px 0px 20px;
 }
 
 @-webkit-keyframes fadeEffect {
@@ -126,63 +127,61 @@ ul {
   list-style: none;
 }
 
-.left_block {
-  font-size: 18px;
-  padding: 30px 10px 10px 10px;
+#current_weather_image {
+  font-weight: 18px;
+}
+#current_weather_temperature {
+  font-size: 36px;
+  position: relative;
+  top: -60px;
+  left: 65px;
 }
 
-.float-left {
-  font-size: 32px;
-  position: relative;
-  left: 40px;
-  width: 100px;
-  margin: 0px;
-}
-
-.units {
-  font-size: 12px;
-  top: -20px;
-  position: relative;
-}
-#current_temperature_max,
-#current_temperature_min {
-  font-size: 18px;
-  position: relative;
-  left: 20px;
-}
-.right_block {
-  position: relative;
-  font-size: 16px;
-  width: 150px;
-  top: -100px;
-  left: 240px;
-}
-
-.tab_details {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-  margin: 30px 0px;
-}
-
-.tab_details button {
-  background-color: blue;
-  border: 1px solid blue;
-  cursor: pointer;
-  font-size: 16px;
-  padding: 10px 5px;
-  transition: 0.3s;
+#current_temperature_max {
+  color: grey;
   font-style: italic;
   font-weight: bold;
 }
 
-.tab button:hover {
-  background-color: #ddd;
+#current_temperature_max,
+#current_temperature_min {
+  font-size: 18px;
+  position: relative;
+  left: 40px;
+  top: -70px;
+  color: grey;
+  font-style: italic;
+  margin-bottom: none;
 }
 
-.current_details {
+.units {
+  font-size: 12px;
+  top: -100px;
+  left: 105px;
+  position: relative;
+}
+
+.current_desctiption {
+  position: absolute;
+  top: 200px;
+  left: 220px;
+}
+
+#btn_details {
+  margin: 30px 0px 0px -20px;
+  text-align: center;
+  background: blue;
+  color: white;
+  border-radius: 4px;
+}
+
+#btn_details:hover {
+  cursor: pointer;
+  color: blue;
+  background: white;
+}
+
+#btn_content {
   display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
+  padding: 15px 0px 0px 0px;
 }
