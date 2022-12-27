@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="src/styles.css" rel="stylesheet" />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <title>Weather Forecast</title>
   </head>
   <body>
@@ -42,15 +43,15 @@
           Forecast on 12 days
         </button>
         <div class="tabcontent" id="Forecast_Today">
-          <div>Today is Friday</div>
-          <div>13:40</div>
+          <div id="current_date"></div>
+          <div id="current_time"></div>
           <div class="current_temperature">
             <img
               src="https://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
               id="current_weather_image"
               width="70px;"
             />
-            <div id="current_weather_temperature">15</div>
+            <div id="current_weather_temperature"></div>
             <div class="units">
               <span><a href="#" id="celsius">C</a></span> |
               <span><a href="#" id="fahrenheit">F</a></span>
@@ -61,7 +62,7 @@
             </div>
             <div class="current_desctiption" id="description">
               <ul>
-                <li id="current_weather_description">Clouds</li>
+                <li id="current_weather_description"></li>
                 <li>Humidity is <span id="current_humidity"></span>%</li>
                 <li>Wind is <span id="current_wind"></span>m/s</li>
               </ul>
