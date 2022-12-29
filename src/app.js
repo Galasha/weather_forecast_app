@@ -53,12 +53,12 @@ function formatDayForecast(timestamp) {
 function displayForecastThree(response) {
   let forecast = response.data.daily;
   let forecastElementThree = document.querySelector("#forecast_3");
-  let forecastHTML = `<div class="row justify-content-center">`;
+  let forecastHTML = `<div class="row gy-5">`;
   forecast.forEach(function(forecastDay, index) {
     if (index >= 0 && index < 3) {
       forecastHTML =
         forecastHTML +
-        ` <div class="col-sm-4">
+        ` <div class="col-sm-4 border border-primary rounded shadow-sm p-4 mb-4 bg-white">
       <div id="forecast_day"> ${formatDayForecast(forecastDay.time)}</div>
       <div id="forecast_icon">
         <img
@@ -129,17 +129,30 @@ function getForecast(coordinates) {
 }
 
 function changeBackground(response) {
-  let weatherInfo = response.data.weather[0].description;
-  if (weatherInfo.match(/snow/)) {
+  let weatherInfo = response.data.condition.description;
+  let checkTemperature = Math.round(response.data.temperature.current);
+  if (weatherInfo.match(/snow/) && checkTemperature > -2) {
     let oldImage = document.getElementById("background_img");
     oldImage.src = "./images/snow1.jpg";
-  } else if (weatherInfo.match(/rain/)) {
+  } else if (weatherInfo.match(/snow/) && checkTemperature < -2) {
+    let oldImage = document.getElementById("background_img");
+    oldImage.src = "./images/snow.jpg";
+  } else if (weatherInfo.match(/rain/) && checkTemperature > -2) {
+    let oldImage = document.getElementById("background_img");
+    oldImage.src = "./images/rain1.jpg";
+  } else if (weatherInfo.match(/rain/) && checkTemperature < -2) {
     let oldImage = document.getElementById("background_img");
     oldImage.src = "./images/rain.jpg";
-  } else if (weatherInfo.match(/sky/)) {
+  } else if (weatherInfo.match(/sky/) && checkTemperature > -2) {
     let oldImage = document.getElementById("background_img");
-    oldImage.src = "./images/clear_sky.jpg";
-  } else if (weatherInfo.match(/clouds/)) {
+    oldImage.src = "./images/sky1.jpg";
+  } else if (weatherInfo.match(/sky/) && checkTemperature < -2) {
+    let oldImage = document.getElementById("background_img");
+    oldImage.src = "./images/sky.jpg";
+  } else if (weatherInfo.match(/clouds/) && checkTemperature > -2) {
+    let oldImage = document.getElementById("background_img");
+    oldImage.src = "./images/clouds1.jpg";
+  } else if (weatherInfo.match(/clouds/) && checkTemperature < -2) {
     let oldImage = document.getElementById("background_img");
     oldImage.src = "./images/clouds.jpg";
   } else {
@@ -197,6 +210,7 @@ function currentCityWeather(position) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
   axios.get(apiUrl).then(currentTemperature);
+  axios.get(apiUrl).then(changeBackground);
 }
 
 function getCurrentPosition() {

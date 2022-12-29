@@ -5,6 +5,14 @@ body {
   color: #faedf0;
 }
 
+.background {
+  position: absolute;
+  opacity: 0.8;
+  top: 0px;
+  bottom: 0px;
+  background-size: cover;
+}
+
 .container {
   position: relative;
   font-family: Poppins;
