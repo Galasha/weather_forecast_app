@@ -10,12 +10,12 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-    <link href="src/styles.css" rel="stylesheet" />
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-
+    <link href="src/styles.css" rel="stylesheet" />
     <title>Weather Forecast</title>
   </head>
   <body>
+    <img src="" width="100%" height="100%" id="background_img" name="img" />
     <div class="container">
       <h1>Weather forecast</h1>
       <div>
@@ -25,17 +25,17 @@
               type="text"
               placeholder="Enter a city..."
               autocomplete="off"
-              size="60px"
+              size="50px"
               id="search_city_name"
             />
+            <input type="submit" value="Search" id="btn_search" />
             <div class="dropdown_content">
               <a href="#">Use your location</a>
             </div>
           </div>
-          <input type="submit" value="Search" id="btn_search" />
         </form>
       </div>
-      <div class="tab">
+      <div class="tab" id="tab_content">
         <button
           class="tablinks"
           onclick="openForecast(event,'Forecast_Today')"
@@ -46,8 +46,8 @@
         <button class="tablinks" onclick="openForecast(event,'forecast_3')">
           Forecast for 3 days
         </button>
-        <button class="tablinks" onclick="openForecast(event,'forecast_7')">
-          Forecast for 7 days
+        <button class="tablinks" onclick="openForecast(event,'forecast_6')">
+          Forecast for 6 days
         </button>
         <div class="tabcontent" id="Forecast_Today">
           <div id="current_date"></div>
@@ -60,35 +60,31 @@
                   id="current_weather_image"
                   width="70px;"
                 />
-                <span id="current_weather_temperature"></span>
+                <span id="current_weather_temperature">15</span>
               </li>
-              <li id="current_weather_description"></li>
+              <li id="current_weather_description">Clouds</li>
             </ul>
           </div>
           <div id="btn_details">Show more details >>></div>
           <div id="btn_content">
-            <div>
-              <ul>
-                <li>
-                  T<small>max</small>
-                  <span id="current_temperature_max"></span>C
-                </li>
-                <li>
-                  T<small>min</small>
-                  <span id="current_temperature_min"></span>C
-                </li>
-              </ul>
-            </div>
-            <div class="right_details">
-              <ul>
-                <li>Humidity is <span id="current_humidity"></span>%</li>
-                <li>Wind is <span id="current_wind"></span>m/s</li>
-              </ul>
-            </div>
+            <ul>
+              <li>
+                T<small>max</small> <span id="current_temperature_max"></span>C
+              </li>
+              <li>
+                T<small>min</small> <span id="current_temperature_min"></span>C
+              </li>
+            </ul>
+          </div>
+          <div class="right_details">
+            <ul>
+              <li>Humidity is <span id="current_humidity"></span>%</li>
+              <li>Wind is <span id="current_wind"></span>m/s</li>
+            </ul>
           </div>
         </div>
         <div class="tabcontent" id="forecast_3"></div>
-        <div class="tabcontent" id="forecast_7"></div>
+        <div class="tabcontent" id="forecast_6"></div>
       </div>
     </div>
     <p>

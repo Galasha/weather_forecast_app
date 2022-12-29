@@ -1,6 +1,9 @@
 let apiKey = "20tf89a5ec2abe273e4324aaode1b5bf";
 
-//структура вкладок открыть закрыть
+function displayWeather() {
+  document.getElementById("tab_content").style.display = "block";
+}
+
 function openForecast(evt, forecast) {
   let i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -31,8 +34,6 @@ function openDetails() {
 
 let displayDetails = document.querySelector("#btn_details");
 displayDetails.addEventListener("click", openDetails);
-
-//форексат
 
 function formatDayForecast(timestamp) {
   let currentDate = new Date(timestamp * 1000);
@@ -82,7 +83,7 @@ function displayForecastThree(response) {
 
 function displayForecastSix(response) {
   let forecast = response.data.daily;
-  let forecastElementSix = document.querySelector("#forecast_7");
+  let forecastElementSix = document.querySelector("#forecast_6");
   let forecastHTML = `<div class="row g-3">`;
   forecast.forEach(function(forecastDay, index) {
     if (index > 0 && index < 7) {
@@ -112,7 +113,6 @@ function displayForecastSix(response) {
 }
 
 function addCurrentDetails(response) {
-  console.log(response.data);
   let currentMax = Math.round(response.data.daily[0].temperature.maximum);
   let updateMax = document.querySelector("#current_temperature_max");
   updateMax.innerHTML = currentMax;
@@ -127,7 +127,27 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecastSix);
   axios.get(apiUrl).then(addCurrentDetails);
 }
-//текущая температура
+
+function changeBackground(response) {
+  let weatherInfo = response.data.weather[0].description;
+  if (weatherInfo.match(/snow/)) {
+    let oldImage = document.getElementById("background_img");
+    oldImage.src = "./images/snow1.jpg";
+  } else if (weatherInfo.match(/rain/)) {
+    let oldImage = document.getElementById("background_img");
+    oldImage.src = "./images/rain.jpg";
+  } else if (weatherInfo.match(/sky/)) {
+    let oldImage = document.getElementById("background_img");
+    oldImage.src = "./images/clear_sky.jpg";
+  } else if (weatherInfo.match(/clouds/)) {
+    let oldImage = document.getElementById("background_img");
+    oldImage.src = "./images/clouds.jpg";
+  } else {
+    let oldImage = document.getElementById("background_img");
+    oldImage.src = "./images/background.jpg";
+  }
+}
+
 function currentTemperature(response) {
   let newCityName = response.data.city;
   let CountryName = response.data.country;
@@ -152,7 +172,6 @@ function currentTemperature(response) {
   getForecast(response.data.coordinates);
 }
 
-//поиск данных по городу
 function searchCity(event) {
   event.preventDefault();
   let searchCityName = document.querySelector("#search_city_name");
@@ -160,9 +179,10 @@ function searchCity(event) {
 
   if (city !== null) {
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-    //axios.get(apiUrl).then(displayWeather);
+    axios.get(apiUrl).then(displayWeather);
     axios.get(apiUrl).then(getForecast);
     axios.get(apiUrl).then(currentTemperature);
+    axios.get(apiUrl).then(changeBackground);
   } else {
     currentCityWeather();
   }
@@ -175,7 +195,7 @@ function currentCityWeather(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
-  // axios.get(apiUrl).then(displayWeather);
+  axios.get(apiUrl).then(displayWeather);
   axios.get(apiUrl).then(currentTemperature);
 }
 
@@ -186,7 +206,6 @@ function getCurrentPosition() {
 let locationButton = document.querySelector(".dropdown_content");
 locationButton.addEventListener("click", getCurrentPosition);
 
-//вставка даты времени
 function formatDate(date) {
   let daysOfWeek = [
     "Sunday",
