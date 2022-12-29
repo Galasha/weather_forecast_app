@@ -1,6 +1,6 @@
 let apiKey = "20tf89a5ec2abe273e4324aaode1b5bf";
-let celsius = null;
 
+//структура вкладок открыть закрыть
 function openForecast(evt, forecast) {
   let i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -32,6 +32,102 @@ function openDetails() {
 let displayDetails = document.querySelector("#btn_details");
 displayDetails.addEventListener("click", openDetails);
 
+//форексат
+
+function formatDayForecast(timestamp) {
+  let currentDate = new Date(timestamp * 1000);
+  let day = currentDate.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  return days[day];
+}
+
+function displayForecastThree(response) {
+  let forecast = response.data.daily;
+  let forecastElementThree = document.querySelector("#forecast_3");
+  let forecastHTML = `<div class="row justify-content-center">`;
+  forecast.forEach(function(forecastDay, index) {
+    if (index >= 0 && index < 3) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-sm-4">
+      <div id="forecast_day"> ${formatDayForecast(forecastDay.time)}</div>
+      <div id="forecast_icon">
+        <img
+          src=${forecastDay.condition.icon_url}
+          id="weather_forecast_icon"
+        />
+      </div>
+      <div class="forecast_temperature">
+        <span id="forecast_temperature_max">${Math.round(
+          forecastDay.temperature.maximum
+        )}</span>...
+        <span id="forecast_temperature_min">${Math.round(
+          forecastDay.temperature.minimum
+        )}</span>
+      </div>
+      </div>`;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElementThree.innerHTML = forecastHTML;
+}
+
+function displayForecastSix(response) {
+  let forecast = response.data.daily;
+  let forecastElementSix = document.querySelector("#forecast_7");
+  let forecastHTML = `<div class="row g-3">`;
+  forecast.forEach(function(forecastDay, index) {
+    if (index > 0 && index < 7) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-sm-4">
+      <div id="forecast_day"> ${formatDayForecast(forecastDay.time)}</div>
+      <div id="forecast_icon">
+        <img
+          src=${forecastDay.condition.icon_url}
+          id="weather_forecast_icon"
+        />
+      </div>
+      <div class="forecast_temperature">
+        <span id="forecast_temperature_max">${Math.round(
+          forecastDay.temperature.maximum
+        )}</span>...
+        <span id="forecast_temperature_min">${Math.round(
+          forecastDay.temperature.minimum
+        )}</span>
+      </div>
+      </div>`;
+    }
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElementSix.innerHTML = forecastHTML;
+}
+
+function addCurrentDetails(response) {
+  console.log(response.data);
+  let currentMax = Math.round(response.data.daily[0].temperature.maximum);
+  let updateMax = document.querySelector("#current_temperature_max");
+  updateMax.innerHTML = currentMax;
+  let currentMin = Math.round(response.data.daily[0].temperature.minimum);
+  let updateMin = document.querySelector("#current_temperature_min");
+  updateMin.innerHTML = currentMin;
+}
+
+function getForecast(coordinates) {
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}`;
+  axios.get(apiUrl).then(displayForecastThree);
+  axios.get(apiUrl).then(displayForecastSix);
+  axios.get(apiUrl).then(addCurrentDetails);
+}
+//текущая температура
 function currentTemperature(response) {
   let newCityName = response.data.city;
   let CountryName = response.data.country;
@@ -42,14 +138,6 @@ function currentTemperature(response) {
     "#current_weather_temperature"
   );
   updateTemperature.innerHTML = currentTemperatureIs;
-  let updateTemperatureMax = document.querySelector("#current_temperature_max");
-  let currentMax = Math.round(response.data.temperature.maximum);
-  updateTemperatureMax.innerHTML = currentMax;
-  let updateTemperatureMin = document.querySelector("#current_temperature_min");
-  let currentMin = Math.round(response.data.temperature.minimum);
-  console.log(currentMin, currentMax);
-  console.log(response.data);
-  updateTemperatureMin.innerHTML = currentMin;
   let currentHumidity = response.data.temperature.humidity;
   let updateHumidity = document.querySelector("#current_humidity");
   updateHumidity.innerHTML = currentHumidity;
@@ -61,10 +149,10 @@ function currentTemperature(response) {
   updateWeather.innerHTML = currentWeather;
   let newIcon = document.querySelector("#current_weather_image");
   newIcon.src = response.data.condition.icon_url;
-  celsius = response.data.temperature.current;
-  //  getForecast(response.data.coordinates);
+  getForecast(response.data.coordinates);
 }
 
+//поиск данных по городу
 function searchCity(event) {
   event.preventDefault();
   let searchCityName = document.querySelector("#search_city_name");
@@ -73,7 +161,7 @@ function searchCity(event) {
   if (city !== null) {
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     //axios.get(apiUrl).then(displayWeather);
-    //axios.get(apiUrl).then(getForecast);
+    axios.get(apiUrl).then(getForecast);
     axios.get(apiUrl).then(currentTemperature);
   } else {
     currentCityWeather();
@@ -98,6 +186,7 @@ function getCurrentPosition() {
 let locationButton = document.querySelector(".dropdown_content");
 locationButton.addEventListener("click", getCurrentPosition);
 
+//вставка даты времени
 function formatDate(date) {
   let daysOfWeek = [
     "Sunday",
