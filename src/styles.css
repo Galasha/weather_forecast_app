@@ -103,11 +103,13 @@ body {
 }
 
 .tab button:hover {
-  background-color: #ddd;
+  background-color: #161853;
+  opacity: 0.7;
+  color: #fcffe7;
 }
 
 .tab .active {
-  background: #292c6d;
+  background: #161853;
 }
 
 .tabcontent {
@@ -186,12 +188,23 @@ ul {
   display: none;
   text-align: left;
   padding: 10px;
+  font-style: italic;
+}
+
+#current_temperature_max,
+#current_temperature_min,
+#current_humidity,
+#current_wind {
+  font-weight: bold;
+  color: #292c6d;
+  font-style: none;
 }
 
 .right_details {
   position: absolute;
   top: 170px;
   left: 280px;
+  font-style: italic;
 }
 
 #forecast_3,

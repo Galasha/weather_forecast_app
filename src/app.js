@@ -23,12 +23,12 @@ document.getElementById("defaultOpen").click();
 function openDetails() {
   let btnDetails = document.getElementById("btn_details");
   let btnContent = document.getElementById("btn_content");
-  if (btnContent.style.display === "none") {
-    btnContent.style.display = "block";
-    btnDetails.innerHTML = "Show less <<<";
-  } else {
+  if (btnContent.style.display === "block") {
     btnContent.style.display = "none";
     btnDetails.innerHTML = "Show more details >>>";
+  } else {
+    btnContent.style.display = "block";
+    btnDetails.innerHTML = "Show less <<<";
   }
 }
 
@@ -53,28 +53,30 @@ function formatDayForecast(timestamp) {
 function displayForecastThree(response) {
   let forecast = response.data.daily;
   let forecastElementThree = document.querySelector("#forecast_3");
-  let forecastHTML = `<div class="row gy-5">`;
+  let forecastHTML = `<div class="row justify-content-sm-around">`;
   forecast.forEach(function(forecastDay, index) {
     if (index >= 0 && index < 3) {
       forecastHTML =
         forecastHTML +
-        ` <div class="col-sm-4 border border-primary rounded shadow-sm p-4 mb-4 bg-white">
-      <div id="forecast_day"> ${formatDayForecast(forecastDay.time)}</div>
-      <div id="forecast_icon">
+        ` <div class="col col-sm-3 border border-primary rounded m-sm-2 shadow p-3 mb-5 bg-body-tertiary">
+            <div  id="forecast_day"> <strong>${formatDayForecast(
+              forecastDay.time
+            )}</strong></div>
+      <div  id="forecast_icon">
         <img
           src=${forecastDay.condition.icon_url}
           id="weather_forecast_icon"
         />
       </div>
       <div class="forecast_temperature">
-        <span id="forecast_temperature_max">${Math.round(
+        <span  id="forecast_temperature_max">${Math.round(
           forecastDay.temperature.maximum
         )}</span>...
-        <span id="forecast_temperature_min">${Math.round(
+        <span  id="forecast_temperature_min">${Math.round(
           forecastDay.temperature.minimum
         )}</span>
       </div>
-      </div>`;
+            </div>`;
     }
   });
   forecastHTML = forecastHTML + `</div>`;
@@ -84,13 +86,15 @@ function displayForecastThree(response) {
 function displayForecastSix(response) {
   let forecast = response.data.daily;
   let forecastElementSix = document.querySelector("#forecast_6");
-  let forecastHTML = `<div class="row g-3">`;
+  let forecastHTML = `<div class="row justify-content-sm-around">`;
   forecast.forEach(function(forecastDay, index) {
     if (index > 0 && index < 7) {
       forecastHTML =
         forecastHTML +
-        ` <div class="col-sm-4">
-      <div id="forecast_day"> ${formatDayForecast(forecastDay.time)}</div>
+        ` <div class="col-sm-3 border border-primary rounded  m-sm-2 shadow p-3 mb-5 bg-body-tertiary">
+      <div id="forecast_day"> <strong> ${formatDayForecast(
+        forecastDay.time
+      )}</strong></div>
       <div id="forecast_icon">
         <img
           src=${forecastDay.condition.icon_url}
