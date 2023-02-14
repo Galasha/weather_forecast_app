@@ -53,12 +53,12 @@ function formatDayForecast(timestamp) {
 function displayForecastThree(response) {
   let forecast = response.data.daily;
   let forecastElementThree = document.querySelector("#forecast_3");
-  let forecastHTML = `<div class="row justify-content-sm-around">`;
+  let forecastHTML = `<div class="row justify-content-around">`;
   forecast.forEach(function(forecastDay, index) {
     if (index >= 0 && index < 3) {
       forecastHTML =
         forecastHTML +
-        ` <div class="col col-sm-3 border border-primary rounded m-sm-2 shadow p-3 mb-5 bg-body-tertiary">
+        ` <div class="col col-3 border border-primary rounded m-1 shadow p-3 mb-5 bg-body-tertiary">
             <div  id="forecast_day"> <strong>${formatDayForecast(
               forecastDay.time
             )}</strong></div>
@@ -86,12 +86,12 @@ function displayForecastThree(response) {
 function displayForecastSix(response) {
   let forecast = response.data.daily;
   let forecastElementSix = document.querySelector("#forecast_6");
-  let forecastHTML = `<div class="row justify-content-sm-around">`;
+  let forecastHTML = `<div class="row justify-content-around">`;
   forecast.forEach(function(forecastDay, index) {
     if (index > 0 && index < 7) {
       forecastHTML =
         forecastHTML +
-        ` <div class="col-sm-3 border border-primary rounded  m-sm-2 shadow p-3 mb-5 bg-body-tertiary">
+        ` <div class="col-4 border border-primary rounded  m-2 shadow p-2 mb-1 bg-body-tertiary">
       <div id="forecast_day"> <strong> ${formatDayForecast(
         forecastDay.time
       )}</strong></div>

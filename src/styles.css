@@ -1,6 +1,8 @@
 body {
   background: #161853;
   color: #faedf0;
+  background: url("../images/background3.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .background {
@@ -8,37 +10,44 @@ body {
   opacity: 0.8;
   top: 0px;
   bottom: 0px;
-  background-size: cover;
-  background: url("./images/background3.jpg") no-repeat;
-  background-size: contain;
-  background-position: center;
+}
+
+@-webkit-keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .container {
   position: relative;
   font-family: Poppins;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
   top: 30px;
 }
 
-.search_form {
-  border: none;
-  font-size: 14px;
-  line-height: 1.7;
-  padding: 5px;
-  font-style: italic;
-  border: none;
-  margin: 0 auto;
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
+#search_form {
+  margin-top: 50px;
+  width: 60%;
+  position: relative;
+  margin: 0px 50px;
+  margin: 0 auto;
+}
 #btn_search {
+  position: absolute;
   border-radius: 6px;
+  line-height: 1.7;
   border: none;
   padding: 5px 15px 5px 15px;
   color: #fcffe7;
   background: #0002a1;
+  margin: 0px 10px;
 }
 
 #search_city_name {
@@ -48,16 +57,9 @@ body {
   padding: 5px 15px 5px 15px;
 }
 
-.dropdown_menu {
-  position: relative;
-  display: inline-block;
-}
-
 .dropdown_content {
   display: none;
-  position: absolute;
-  background-color: #fcffe7;
-  width: 465px;
+  position: relative;
   text-align: center;
   border-radius: 6px;
   font-size: 14px;
@@ -81,11 +83,11 @@ body {
   overflow: hidden;
   border: 1px solid #faedf0;
   background-color: #faedf0;
-  margin: 30px 0px;
-  width: 540px;
+  width: 60%;
   position: relative;
-  left: 20px;
   border-radius: 4px;
+  margin: 0 auto;
+  margin-top: 30px;
 }
 
 .tab button {
@@ -115,42 +117,22 @@ body {
 
 .tabcontent {
   display: none;
-  border: 1px solid #ccc;
+
   border-top: none;
   border-bottom: none;
-  padding: 60px 0px 0px 20px;
+  padding: 47px 0px 0px 20px;
   color: #161853;
-}
-
-@-webkit-keyframes fadeEffect {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeEffect {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-ul {
-  list-style: none;
-  padding: none;
 }
 
 #current_date,
 #current_time {
-  font-size: 16px;
+  font-size: 18px;
   text-align: left;
   font-style: italic;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #current_weather_temperature {
@@ -159,16 +141,17 @@ ul {
 }
 #current_weather_description {
   text-transform: capitalize;
-  font-size: 16px;
+  font-size: 18px;
   font-style: italic;
   font-weight: bold;
   line-height: 0.6;
+  display: flex;
+  align-items: center;
+  padding: 0px 30px;
 }
 
 .current_temperature {
-  position: absolute;
-  top: 50px;
-  left: 300px;
+  position: relative;
 }
 
 #btn_details {
@@ -190,6 +173,7 @@ ul {
   text-align: left;
   padding: 10px;
   font-style: italic;
+  color: #161853;
 }
 
 #current_temperature_max,
@@ -198,14 +182,7 @@ ul {
 #current_wind {
   font-weight: bold;
   color: #292c6d;
-  font-style: none;
-}
-
-.right_details {
-  position: absolute;
-  top: 170px;
-  left: 280px;
-  font-style: italic;
+  text-align: center;
 }
 
 #forecast_3,
@@ -214,6 +191,7 @@ ul {
   font-size: 16px;
   color: #161853;
   background-color: #faedf0;
+  margin-right: 5px;
 }
 
 #forecast_temperature {
@@ -225,7 +203,7 @@ ul {
 }
 
 p {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   max-width: 300px;
   text-align: center;
@@ -236,4 +214,39 @@ p {
   opacity: 0.8;
   font-size: 12px;
   font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  #tab_content {
+    width: 100%;
+    font-size: 12px;
+  }
+  #current_weather_image {
+    width: 50%;
+  }
+  #current_date,
+  #current_time,
+  #current_weather_description {
+    font-size: 14px;
+  }
+  #weather_forecast_icon {
+    width: 70%;
+  }
+
+  #forecast_day {
+    font-size: 12px;
+  }
+  #forecast3days,
+  #defaultOpen,
+  #forecast6days {
+    font-size: 14px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 1000px) {
+  #background_img {
+    width: 125% !important;
+    height: 125% !important;
+  }
 }
