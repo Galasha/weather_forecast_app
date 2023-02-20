@@ -58,7 +58,7 @@ function displayForecastThree(response) {
     if (index >= 0 && index < 3) {
       forecastHTML =
         forecastHTML +
-        ` <div class="col col-3 border border-primary rounded m-1 shadow p-3 mb-5 bg-body-tertiary">
+        ` <div class="col col-3 border border-primary rounded m-1 shadow p-2 mb-5 bg-body-tertiary">
             <div  id="forecast_day"> <strong>${formatDayForecast(
               forecastDay.time
             )}</strong></div>

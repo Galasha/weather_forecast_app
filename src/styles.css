@@ -3,12 +3,14 @@ body {
   color: #faedf0;
   background: url("../images/background3.jpg") no-repeat center center fixed;
   background-size: cover;
+  font-size: 14px;
 }
 
 .background {
   position: absolute;
   opacity: 0.8;
   top: 0px;
+
   bottom: 0px;
 }
 
@@ -55,6 +57,7 @@ h1 {
   border-radius: 6px;
   border-width: 1px;
   padding: 5px 15px 5px 15px;
+  font-size: 1rem;
 }
 
 .dropdown_content {
@@ -62,7 +65,6 @@ h1 {
   position: relative;
   text-align: center;
   border-radius: 6px;
-  font-size: 14px;
 }
 
 .dropdown_content a {
@@ -96,7 +98,7 @@ h1 {
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 1.3rem;
   text-align: center;
   padding: 10px 20px;
   transition: 0.3s;
@@ -117,16 +119,15 @@ h1 {
 
 .tabcontent {
   display: none;
-
   border-top: none;
   border-bottom: none;
-  padding: 47px 0px 0px 20px;
+  padding: 60px 0px 0px 20px;
   color: #161853;
 }
 
 #current_date,
 #current_time {
-  font-size: 18px;
+  font-size: 1.3rem;
   text-align: left;
   font-style: italic;
   font-weight: bold;
@@ -136,12 +137,12 @@ h1 {
 }
 
 #current_weather_temperature {
-  font-size: 36px;
+  font-size: 3rem;
   text-align: left;
 }
 #current_weather_description {
   text-transform: capitalize;
-  font-size: 18px;
+  font-size: 1.3rem;
   font-style: italic;
   font-weight: bold;
   line-height: 0.6;
@@ -188,7 +189,7 @@ h1 {
 #forecast_3,
 #forecast_6 {
   text-align: center;
-  font-size: 16px;
+  font-size: 1.2rem;
   color: #161853;
   background-color: #faedf0;
   margin-right: 5px;
@@ -219,27 +220,28 @@ p {
 @media (max-width: 600px) {
   #tab_content {
     width: 100%;
-    font-size: 12px;
+    font-size: 0.85rem;
   }
+
   #current_weather_image {
     width: 50%;
   }
   #current_date,
   #current_time,
   #current_weather_description {
-    font-size: 14px;
+    font-size: 1rem;
   }
   #weather_forecast_icon {
     width: 70%;
   }
 
   #forecast_day {
-    font-size: 12px;
+    font-size: 0.85rem;
   }
   #forecast3days,
   #defaultOpen,
   #forecast6days {
-    font-size: 14px;
+    font-size: 0.85rem;
     padding: 5px;
   }
 }
@@ -248,5 +250,43 @@ p {
   #background_img {
     width: 125% !important;
     height: 125% !important;
+  }
+}
+
+@media (max-width: 300px) {
+  #tab_content {
+    width: 100%;
+    font-size: 0.6rem;
+  }
+
+  #current_weather_image {
+    width: 40%;
+  }
+  #current_date,
+  #current_time,
+  #current_weather_description {
+    font-size: 0.7rem;
+  }
+  #current_weather_temperature {
+    font-size: 1.3rem;
+  }
+  #weather_forecast_icon {
+    width: 70%;
+  }
+
+  #forecast_day {
+    font-size: 0.55rem;
+  }
+
+  #forecast3days,
+  #defaultOpen,
+  #forecast6days {
+    font-size: 0.55rem;
+    padding: 2px;
+  }
+
+  #forecast_temperature_max,
+  #forecast_temperature_min {
+    font-size: 0.55rem;
   }
 }
